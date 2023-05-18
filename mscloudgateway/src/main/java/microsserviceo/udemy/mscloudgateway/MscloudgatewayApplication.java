@@ -17,22 +17,14 @@ public class MscloudgatewayApplication {
 		SpringApplication.run(MscloudgatewayApplication.class, args);
 	}
 
-//	@Bean
-//	public RouteLocator routes(RouteLocatorBuilder builder){
-//		return builder
-//				.routes()
-//					.route( r -> r.path("/clientes/**").uri("lb://msclientes"))
-//				.build();
-//	}
-
 	@Bean
-	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-		return builder.routes()
-				.route(p -> p
-						.path("/clientes/**")
-						.uri("lb://msclientes"))
-
+	public RouteLocator routes(RouteLocatorBuilder builder){
+		return builder
+				.routes()
+					.route( r -> r.path("/clientes/**").uri("lb://msclientes"))
 				.build();
 	}
+
+
 
 }
