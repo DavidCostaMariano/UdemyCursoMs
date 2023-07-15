@@ -1,6 +1,7 @@
 package microsservico.udemy.msclientes.application;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import microsservico.udemy.msclientes.application.representation.ClienteSaveRequest;
 import microsservico.udemy.msclientes.domain.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,13 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/clientes")
 @RequiredArgsConstructor
+@Slf4j
 public class ClienteController {
 
     private final ClienteService clienteService;
     @GetMapping
     public String status(){
+        log.info("Obtendo status do microservice de clientes");
         return "OK";
     }
 
