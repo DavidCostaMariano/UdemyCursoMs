@@ -36,14 +36,14 @@ public class CartoesController {
     }
 
     @GetMapping(params = "renda")
-    public ResponseEntity getCartoesRendaAte(@RequestParam("renda") Long renda){
+    public ResponseEntity<List<Cartao>> getCartoesRendaAte(@RequestParam("renda") Long renda){
         List<Cartao> cartoesRendaMenorIgual = cartaoService.getCartoesRendaMenorIgual(renda);
         return ResponseEntity.ok(cartoesRendaMenorIgual);
     }
 
 
     @GetMapping(params = "cpf")
-    public ResponseEntity<List<CartoesPorClienteResponse>> getCartoesByCliente(String cpf){
+    public ResponseEntity<List<CartoesPorClienteResponse>> getCartoesByCliente(@RequestParam("cpf") String cpf){
         List<ClienteCartao> clienteCartoes = clienteCartaoService.listCartoesByCpf(cpf);
         List<CartoesPorClienteResponse> resultList = clienteCartoes.stream()
                 .map(CartoesPorClienteResponse::fromModel)
