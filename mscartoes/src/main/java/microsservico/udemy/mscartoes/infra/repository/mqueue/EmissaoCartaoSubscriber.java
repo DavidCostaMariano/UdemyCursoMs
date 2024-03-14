@@ -3,6 +3,7 @@ package microsservico.udemy.mscartoes.infra.repository.mqueue;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import microsservico.udemy.mscartoes.domain.Cartao;
 import microsservico.udemy.mscartoes.domain.ClienteCartao;
 import microsservico.udemy.mscartoes.domain.DadosSolicitacaoEmissaoCartao;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class EmissaoCartaoSubscriber {
 
     private final CartaoRepository cartaoRepository;
@@ -32,7 +34,7 @@ public class EmissaoCartaoSubscriber {
             clienteCartao.setCpf(dados.getCpf());
             clienteCartaoRepository.save(clienteCartao);
         }catch (Exception e){
-            e.printStackTrace();
+            log.error("Erro ao receber solicitação de emissao de cartao: {}", e.getMessage());
         }
     }
 

@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import microsservico.udemy.msclientes.application.representation.ClienteSaveRequest;
 import microsservico.udemy.msclientes.domain.Cliente;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class ClienteController {
+
+    private static final Logger log = LoggerFactory.getLogger(ClienteController.class);
 
     private final ClienteService clienteService;
     @GetMapping
