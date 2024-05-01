@@ -5,5 +5,5 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:11
 WORKDIR /app
-COPY --from=build ./app/target/*.jar ./cartoes.jar
-ENTRYPOINT java -jar cartoes.jar
+COPY --from=build ./app/target/*.jar ./mscartoes.jar
+ENTRYPOINT java -jar mscartoes.jar

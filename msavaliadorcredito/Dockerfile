@@ -5,10 +5,10 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:11
 WORKDIR /app
-COPY --from=build ./app/target/*.jar ./eureka.jar
+COPY --from=build ./app/target/*.jar ./msavaliadorcredito.jar
 EXPOSE 8761
 
 ARG RABBITMQ_SERVER=rabbitmq-host
 ARG EUREKA_SERVER=localhost
 
-ENTRYPOINT java -jar eureka.jar
+ENTRYPOINT java -jar msavaliadorcredito.jar
